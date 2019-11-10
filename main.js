@@ -1,9 +1,8 @@
 $(document).ready( function() {
     var windowHeight = $(window).height();
-    var windowWidth = $(window).width();
+    var windowWidth  = $(window).width();
     var photoContent = $('.photo-content').length;
 
-    
     $('.photo-content').each(function(index) {
 
         contentIndex = index;
@@ -23,25 +22,13 @@ $(document).ready( function() {
         $(idImgHash).attr('src', imgSrc);
     });
 
-
     // Unload the Popupbox
     function unloadPopupBox() {
         $(".background").css('display', 'none');
         $('.popup_box').removeClass('active').addClass('inactive');
     };
 
-    // Classes that fires off 'unloadPopupBox'
-    $('.popupBoxClose, .popup_img, .background').click( function() {
-        unloadPopupBox();
-    });
-
-    //Unload the Popupbox
-    function unloadPopupBox() {
-        $(".background").css('display', 'none');
-        $('.popup_box').removeClass('active').addClass('inactive');
-    };
-
-    //Classes that fires off 'unloadPopupBox'
+    // Classes that fires off
     $('.popupBoxClose, .popup_img, .background').click( function() {
         unloadPopupBox();
     });
@@ -67,9 +54,6 @@ $(document).ready( function() {
     $('img.photo').click(function() {
         flatID      = this.id;
         flatHash    = '#'+flatID;
-        imgWidth    = $(flatHash).attr('data-width');
-        imgHeight   = $(flatHash).attr('data-height');
-        imgID       = flatHash + '_image';
         contentID   = flatHash + '_box';
         
         $(idImg).addClass("active");
@@ -77,18 +61,16 @@ $(document).ready( function() {
         $(contentID).addClass('active').removeClass('inactive').fadeIn('slow');
     });
 
-
     // Prev & Next buttons and keyboard
     $(document).on('swipeleft', 'img', function(){
        imgNext();
     });
-    
     $(document).on('swiperight', 'img', function(){
         imgPrev();
     });
     
     function imgNext(){
-        var $active = $('.popup_box.active'), $targetslide;
+        var $active = $('.popup_box.active');
         if ($active.next('.popup_box').length) {
             $target = $active.next('.popup_box');
             $target.addClass('active');
@@ -99,8 +81,9 @@ $(document).ready( function() {
             $active.removeClass('active');
         }
     }
+
     function imgPrev(){
-        var $active = $('.popup_box.active'), $targetslide;
+        var $active = $('.popup_box.active');
         if ($active.prev('.popup_box').length) {
             $target = $active.prev('.popup_box');
             $target.addClass('active');
@@ -111,8 +94,5 @@ $(document).ready( function() {
             $active.removeClass('active');
         }
     }
-
-
-
-    
+ 
 })
